@@ -71,9 +71,34 @@ A combination of the above scores can be used to rank results returned in a keyw
 
 ### Semantic Similarity with Sentence Vectors
 
-We know that any sentence of text can be represented in the form of a numerical vector which captures the semantic meaning of the passage/sentence. There are multiple methods of sentence vectorization including the use of Doc2Vec, SentenceBERT, Universal Sentence Encoder etc.   
+We know that any sentence of text can be represented in the form of a numerical vector which captures the semantic meaning of the passage/sentence. There are multiple methods of embedding sentences in vectors including the use of [Doc2Vec](https://radimrehurek.com/gensim/models/doc2vec.html), [SentenceBERT](https://medium.com/dair-ai/tl-dr-sentencebert-8dec326daf4e), [Universal Sentence Encoder](https://www.tensorflow.org/hub/tutorials/semantic_similarity_with_tf_hub_universal_encoder) etc.   
 
-As we store the vector represenetations of the questions in our dataset, we can simply calculate the value of some similarity measure between the query sentence and the questions so that the results can be ranked on the basis of closest semantic meaning with the query. 
+As we store the vector represenetations of the questions in our dataset, we can simply calculate the value of some similarity measure between the query sentence and the questions so that the results can be ranked on the basis of closest semantic meaning with the query. Some of the distance/similarity measures between the sentence vectors which can be used for the purpose are :
+
+* [Euclidean Distance](https://en.wikipedia.org/wiki/Euclidean_distance#:~:text=In%20mathematics%2C%20the%20Euclidean%20distance,being%20called%20the%20Pythagorean%20distance.)
+* [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity#:~:text=In%20data%20analysis%2C%20Cosine%20similarity,to%20both%20have%20length%201.)
+* Nearest Neighbor Search Methods
+  * [NN Search](https://en.wikipedia.org/wiki/Nearest_neighbor_search#:~:text=Nearest%20neighbor%20search%20(NNS)%2C,the%20larger%20the%20function%20values.)
+  * Approximate NN Search
+  * [K-d Trees](https://en.wikipedia.org/wiki/K-d_tree)
+  * [Locality-sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) (LSH)
+  * Neighborhood Graphs
+
+Here, we have used the Universal Sentence Encoder (**USE**) offered by TensowFlow Hub to embed the Question titles in the dataset and the query text to **512-dimensional** vectors. In addition, we have used the built-in cosine similarity function in the native scripting language of ElasticSearch to rank results based on semantic meaning. 
+
+## Adoption of ElasticSearch for our Use Case
+
+[ElasticSearch](https://www.elastic.co/) is a distributed, open-source search and analytics engine built on Apache Lucene and developed in Java. It started as a scalable version of the Lucene open-source search framework then added the ability to horizontally scale Lucene indices. ElasticSearch allows you to store, search, and analyze huge volumes of data quickly and in near real-time and give back answers in milliseconds. It’s able to achieve fast search responses because instead of searching the text directly, it searches an index. It uses a structure based on documents instead of tables and schemas and comes with extensive REST APIs for storing and searching the data. At its core, you can think of ElasticSearch as a server that can process JSON requests and give you back JSON data. ([Source](https://www.knowi.com/blog/what-is-elastic-search/)). 
+
+
+### Inverted Index in ElasticSearch
+
+An index in Elasticsearch is actually what’s called an inverted index, which is the mechanism by which all search engines work. It is a data structure that stores a mapping from content, such as words or numbers, to its locations in a document or a set of documents. Basically, it is a hashmap-like data structure that directs you from a word to a document. An inverted index doesn’t store strings directly and instead splits each document up to individual search terms (i.e. each word) then maps each search term to the documents those search terms occur within. For example, in the image below, the term “best” occurs in document 2, so it is mapped to that document. This serves as a quick look-up of where to find search terms in a given document. By using distributed inverted indices, Elasticsearch quickly finds the best matches for full-text searches from even very large data sets. ([Source](https://www.knowi.com/blog/what-is-elastic-search/)).  
+
+
+
+
+
 
 
 
