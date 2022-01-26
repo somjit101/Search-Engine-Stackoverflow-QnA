@@ -96,6 +96,21 @@ Here, we have used the Universal Sentence Encoder (**USE**) offered by TensowFlo
 An index in Elasticsearch is actually what’s called an inverted index, which is the mechanism by which all search engines work. It is a data structure that stores a mapping from content, such as words or numbers, to its locations in a document or a set of documents. Basically, it is a hashmap-like data structure that directs you from a word to a document. An inverted index doesn’t store strings directly and instead splits each document up to individual search terms (i.e. each word) then maps each search term to the documents those search terms occur within. For example, in the image below, the term “best” occurs in document 2, so it is mapped to that document. This serves as a quick look-up of where to find search terms in a given document. By using distributed inverted indices, Elasticsearch quickly finds the best matches for full-text searches from even very large data sets. ([Source](https://www.knowi.com/blog/what-is-elastic-search/)).  
 
 
+![Inverted_Index](Elastic_Inverted_Index.png). 
+
+## Overall Design
+
+Finally, we can put together an overall design approach for implementing the Keyword/Semantic Search Engine for StackOverflow Q&A. Let us frame the approach in the following steps :
+
+* **Step 1 :** Pre-process the StackSample Dataset and store the Question titles, both in the text form and USE vector embeddings in an ElasticSearch Index
+* **Step 2 :** Read the Query Sentence from the user, embed it in a 512-dimensional vector format using USE and feed them to the ElasticSearch instance using their Web-API. 
+* **Step 3 :** Read the ranked results returned by ElasticSearch as per specified scoring/ranking functions in JSON format and post-process them to be displayed to the user.  
+
+This overall approach can be easily visualized in the following diagram :  
+
+
+
+
 
 
 
