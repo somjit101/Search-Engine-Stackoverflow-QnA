@@ -110,8 +110,14 @@ This overall approach can be easily visualized in the following diagram :
 
 ![ElasticSearch Process Flow](ElasticSearch_Process_Flow.png) 
 
+There can also be a cloud implementation of this project on cloud platforms like Microsoft Azure, AWS and other PaaS providers as they offer built-in ElasticSearch capabilities using Web-APIs :
+* [AWS ElasticSearch Service](https://aws.amazon.com/elasticsearch-service/)
+* [ElasticSearch on Azure](https://azure.microsoft.com/en-in/overview/linux-on-azure/elastic/)
+
 
 ## References
+
+* 
 
 
 
