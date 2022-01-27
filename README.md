@@ -84,7 +84,7 @@ As we store the vector represenetations of the questions in our dataset, we can 
   * [Locality-sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) (LSH)
   * Neighborhood Graphs
 
-Here, we have used the Universal Sentence Encoder (**USE**) offered by TensowFlow Hub to embed the Question titles in the dataset and the query text to **512-dimensional** vectors. In addition, we have used the built-in cosine similarity function in the native scripting language of ElasticSearch to rank results based on semantic meaning. 
+Here, we have used the Universal Sentence Encoder (**USE**) offered by TensowFlow Hub to embed the Question titles in the dataset and the query text to **512-dimensional** vectors. In addition, we have used the built-in cosine similarity function in the native scripting language of ElasticSearch to rank results based on semantic meaning. More such built-in vector scoring functions can be found [here](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/query-dsl-script-score-query.html)
 
 ## Adoption of ElasticSearch for our Use Case
 
@@ -117,7 +117,10 @@ There can also be a cloud implementation of this project on cloud platforms like
 
 ## References
 
-* 
+* [Text Similarity Search with vectors with ElasticSearch](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch)
+* [Text Embeddings in Elasticsearch - Juli Tibshirani](https://github.com/jtibshirani/text-embeddings)
+* [ElasticSearch Terminology](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html)
+* [NMSLIB - An efficient similarity search library based on NN-Search methods](https://github.com/nmslib/nmslib)
 
 
 
