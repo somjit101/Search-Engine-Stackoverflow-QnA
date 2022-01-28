@@ -114,6 +114,15 @@ There can also be a cloud implementation of this project on cloud platforms like
 * [AWS ElasticSearch Service](https://aws.amazon.com/elasticsearch-service/)
 * [ElasticSearch on Azure](https://azure.microsoft.com/en-in/overview/linux-on-azure/elastic/)
 
+## Details of Python files
+
+* [readData](readData.py) - Used to read the Questions and Answers from the StackSample Dataset which is already downloaded and kept offline. Displays the no. of Questions/Answers found.
+* [top200KQues][top200KQues.py] - Used to read only the top 200K Question Titles from the StackSample Dataset, instead of the whole dataset (which is quite bulky) and store this slice as a separate file. 
+* [testUSE4](testUSE4.py) - Used to test the popular pre-trained sentence vectorization model, Universal Sentence Encoder on the Google TensowFlow Hub. 
+* [indexES](indexES.py) - Used to connect to the ElasticSearch Web service and create a database, here known as an Index. The Index contains the top 200K Question Titles from the StackSample dataset, both in sentence and in vector form. 
+* [searchES](searchES.py) - Executes the search functionality on the above ElasticSearch index with a search query as specified by the user.
+* [searchES_FlaskAPI](searchES_FlaskAPI.py) - The same search functionality as above hosted as a REST API using the Python Flask library. 
+
 
 ## References
 
