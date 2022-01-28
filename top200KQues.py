@@ -10,7 +10,7 @@ import csv
 NUM_QUESTIONS_INDEXED = 200000
 
 # Col-Names: Id, OwnerUserId, CreationDate, ClosedDate, Score, Title, Body
-cnt=0
+cnt = 0
 
 f = open("top200KQuesData", "w", encoding = "latin1")
 
